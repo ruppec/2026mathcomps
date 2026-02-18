@@ -9,3 +9,7 @@ example
 or
 
 ``` python3 -m http.server 8080```
+
+
+## Controls
+Press "ESC" or "O" to open the overview
