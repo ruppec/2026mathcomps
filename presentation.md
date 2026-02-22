@@ -2,88 +2,233 @@
 ### Interactive Visualizations of Projective Varieties in Spherical Geometry
 Katie Hess, Charlie Ruppe, and Jake Schaefer
 
+Note: Read title and names
 
-## We are illustrating Math, what does that mean?
-We are taking objects living in 3D space and determining how to color pictures
-to give the *impression* of those objects living in the real world.
+---
+
+## Overview
+* Projective Space
+* Spherical Geometry
+* New Images and Visualizations
+* How To Make Beautiful Images Using Math
+
+Note: We will begin by explaining what we mean by projective space and spherical
+geometry, and how they relate.
+
+Then we will show you some of our images and interactive visualizations of
+objects in spherical geometry and projective space.
+
+Finally we will teach you how to make your own pictures of these objects using
+some math and a little cleverness.
+
+---
+
+# Projective Space
+
+---
+
+From Euclid's Elements Book 1.
+
+<img src="euclidsparallellines.png">
+
+"Parallel lines do not meet."
+
+Today we will disobey Euclid and consider:
+
+what if parallel lines did meet *somewhere*.
+
+---
+
+### Motivation: Perspective In Art
+Since the Renaissance, artists have used "vanishing points" to represent
+3-dimensional geometry on a flat canvas.
+
+<img height="200" src="Cappella_brancacci,_Guarigione_dello_storpio_e_resurrezione_di_Tabita_(restaurato),_Masolino.jpeg" data-preview-image data-preview-fit="cover">
+<img height="200" src="first_use_of_perspective_with_lines.png" data-preview-image data-preview-fit="cover">
+
+Parallel lines along the same direction are drawn meeting at a shared vanishing
+point placed on the horizon line.
+
+Note:
+Since our project is on illustrating math, we will first discuss how artists
+represented 3D space in an accurate and illuminating way.
+
+The picture is of Masolino da Panicale's St. Peter Healing a Cripple and the Raising of Tabitha (c. 1423), the earliest extant artwork known to use a consistent vanishing point.
+The correct way of drawing perspective is to draw parallel lines converging at
+the same point, the "vanishing point" of that direction which is placed on the
+horizon line.
+
+---
+
+*Projective Geometry* is when we take these vanishing points seriously by
+adjoining "points at infinity" to normal Euclidean space.
 
 
-## Perspective in art
-Artists have refined this process over centuries, eventually developing tools of
-perspective to make more accurate pictures.
+<img height="300" src="penroseillustration.png" data-preview-image data-preview-fit="cover">
 
-When drawing with perspective, artists draw "points at infinity" 
-placed on the horizon denoting where parallel lines in the scene converge.
+This gives us a clean way of talking about phenomena at infinity (think
+asymptotes, convergence...)
 
-If two lines are headed in the same direction, no matter how far apart they are
-they will appear to converge at the same point at infinity.
+---
 
-Note: Add perspective drawing and railroad tracks
+We can represent many points of the *projective plane* using the artistic method
+of perspective projection.
+
+<img height="350" src="Vanishing_point.svg">
+
+**Fact**: In the projective plane *any* two lines intersect at exactly one point.
+
+Note: Here we can represent many points of the 2D space on the bottom using
+points on the image plane. What's labeled as the vanishing point is just the way
+of representing the vanishing point on the image plane.
+
+It's this perspective projection informed by the work of artists that inspires
+the mathematical definition of projective space.
+
+Instead of saying that non-parallel lines intersect at one point, we can say that
+any two lines intersect at exactly one point.
+
+---
+
+Some nice theorems in projective space:
+<div style="display: flex; align-items: flex-start; gap: 20px;">
+  <div style="flex: 1; text-align: left;">
+    <ul>
+      <li><strong>Bezout's Theorem:</strong> The number of intersection points of two polynomials is the product of their degrees.</li>
+      <li>All smooth <strong>conic sections</strong> (ellipses, parabolas, hyperbolas) are equivalent in projective space.</li>
+      <li><strong>Duality:</strong> You can swap the words "line" and "point" in any theorem to get a new valid theorem.</li>
+    </ul>
+  </div>
+  <div style="flex: 0.4;">
+    <img src="bezout-cubic-quartic.jpg" style="width: 100%; border: none; box-shadow: none;">
+    <img src="conic-section.png" style="width: 70%; border: none; box-shadow: none;">
+  </div>
+</div>
+
+Note: We don't have time in this presentation to explain how all of this works.
+But know that projective space pops up all over math and physics.
+
+---
+
+### Plane Model of Projective Space
+
+Using the artistic model of projective space shown before we are unable to
+represent all points.
+
+<img height="300" src="Vanishing_point.svg">
+
+**Problem**: We can't use a point on the image plane to represent the point directly below $O$.
 
 
-## Perspective in math
+Note:
+In fact in the way it's shown here we aren't representing points behind O either.
 
-Mathematicians go further by considering these points at infinity as genuine
-points of the scene! We call this projective space.
+---
 
-$$ \mathbb P^n = \mathbb R^n \cup \{ p_l \mid l \text{is a line passing through
-the origin } \}$$ We've taken the entire real plane and defined some extra
-points. Each extra point *corresponds* to some direction off to infinity,
-represented as a line through the origin.
+### Sphere Model of Projective Space
 
-Note: Not sure where exactly we will introduce this
+<img src="spheremodel.png">
 
-Another useful and equivalent definition is
-$$ \mathbb P^n = \{ \text{ lines in } \mathbb R^{n+1} \}.$$
+Take the line going from the Eye to some point $P$ on the plane.  The intersection
+of that line and the sphere gives us a representative point.
 
+---
 
-Where are these points $p_l$ at infinity?
-
-How do they relate to the other points?
+**Problem**: Two lines must intersect in just one point!
 
 
-## Properties 
+<img height='250' src="spheremodel.png" style="margin: -10px">
 
-The point $p_l$ is the unique intersection of $l$ and all lines parallel to $l$.
+To fix this we will identify each point on the sphere with its antipode.
+Considering both to be two representatives of the same point.
 
-Thus in 2D projective space $\mathbb P^2$, all lines converge at exactly one
-point. So the point at infinity for a given direction is the same as the point
-at infinity for the opposite direction.
+Now points on the sphere above the $Z=0$ plane also have a meaning, given by
+their antipode.
 
-Note: Include a diagram.
-For example, on an infinite plane with cardinal directions, the point at
-infinity for north is the same point at infinity for going south, but it's
-different from the point at infinity going east.
+Note:
 
-In 3 and higher dimensions can have lines with no intersection, when the
-lines are *skew*
+It looks like the parallel lines are intersecting in two places.
 
-Note: include a picture of skew lines here
+We fix this by identifying antipodal points.
+
+A mathematician might say we are glueing the sphere to itself, but there is no
+good way to physically do this in three dimensions.
+
+For the experts in the room, I've just defined a 2 to 1 covering map from the
+2-sphere to the real projective plane.
+
+---
+
+So far we've been working with 2D projective geometry, the projective plane.
+
+It turns out you this same construction works for 3D projective space, except
+now we have to use a hypersphere living in 4D space.
+
+<figure style="margin-top: 20px">
+<img height="300" src="Hypersphere.png" >
+<figcaption style="font-size: 0.6em; margin-top:-20px">
+The direct projection of the hypersphere onto $\mathbb R^3$.
+</figcaption>
+</figure>
+
+---
+
+# Spherical Geometry
+
+---
+
+[Define what a geodesic is by first defining a notion of distance on the sphere,
+and that the geodesic is the shortest path]
+
+---
+
+[Explain spherical geometry for S^2 and then argue by analogy that it works
+similarly in S^3.]
+[Specifically discuss how geodesics converge at the antipodal point]
+
+---
+
+[Include the interactive demo of the earth in S^3 in an iframe]
+
+--- 
+
+# New Images and Visualizations
+[[Start running through visualizations as fast as we can and say they can check
+them out for themselves on their own time]]
+[[Maybe show affine varieties before showing the projective versions]]
+
+---
+
+# How To Make Beautiful Images Using Math
+
+[[ Quickly explain the problem of rendering]]
+[[ Explain ray tracing/raymarching with an SDF and then say what our naive
+approximate SDF is with a code block and LaTeX formula]]
+
+[[ If there is time we go into Descartes Method in Berntein Basis]]
+
+---
+
+# *Fin.*
+
+Any questions?
+
+[[this slide should include some things to make asking questions easier, perhaps
+formulas, diagrams, or a slideshow of nice renders we've made]]
+---
 
 
-## Properties
 
-One of the nicest results in projective space is Bezout's theorem.
 
-If $p$ and $q$ are polynomials of degree $c$ and $d$ then their values coincide
-at exactly $cd$-many points (counting multiplicities and complex solutions). 
-Equivalently, their common solution set 
-$$ \{ x \in \mathbb P^2 \mid p(x) = q(x) = 0 \}$$
-is just a collection of $cd$-many points.
+[[this is old stuff]]
 
-## Examples
-Lines in $\mathbb P^2$ are the zero set of degree one polynomials and we see
-that their intersection is just 1 point.
+### A better way to view $\mathbb{P^2}$
+discuss the double cover from S^2
 
-Two lines together is degree 2, and intersect with one more line and you get 2
-intersections (counting multiplicity).
 
-A hyperbola is degree 2 and its asymptote is degree 1. They intersect at
-infinity once with multiplicity 2.
-
-## A better way to view $\mathbb{P^2}$
-discuss the double cover from S^3
-
+<!-- We use data-src instead of src attribute to enable --
+  -- lazy-loading by reveal.js -->
+<iframe data-src="example.html"></iframe>
 
 
 
