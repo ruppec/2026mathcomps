@@ -427,8 +427,12 @@ Just like our eyes! Hawk Tuah!
 Signed distance function checks if we are outside or inside an object. 
 Tracing a geodesic is like following a path with your bike and not having to turn the handles
 
-Ray tracing would be when we intersect rays with a rasterized mesh. Our scenes arent defined by discrete triangles,
-but by implicit equations, so we walk along the ray until we reach the surface
+Ray tracing would be when we intersect rays with a rasterized mesh. Our scenes 
+arent defined by discrete triangles, but by implicit equations, so we walk 
+along the ray until we reach the surface
+
+We can imagine bubbles at each point along our path, and where that bubble 
+intersects an object is the furthest distance we can travel
 
 ---
 
