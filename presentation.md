@@ -260,7 +260,10 @@ this is an extrinsic visualization of the hypersphere and its rotations but we a
 
 ---
 
-<iframe width="800" height="600" frameborder="0" src="earthdemo.html" allowfullscreen></iframe>
+### The Earth in the $S^3$ Geometry
+
+
+<iframe width="1000" height="600" frameborder="0" src="earthdemo.html" allowfullscreen></iframe>
 
 Note:
 
@@ -284,10 +287,6 @@ and now we see it naturally coming back around the sphere towards us again
 ---
 
 # New Images and Visualizations
-
-[[Start running through visualizations as fast as we can and say they can check
-them out for themselves on their own time]]
-[[Maybe show affine varieties before showing the projective versions]]
 
 ---
 
