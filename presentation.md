@@ -199,15 +199,15 @@ For the experts in the room, I've just defined a 2 to 1 covering map from the
 
 ---
 
-So far we've been working with 2D projective geometry, the projective plane.
+So far we've been working with the projective plane and the typical sphere $S^2$.
 
 It turns out you this same construction works for 3D projective space, except
-now we have to use a hypersphere living in 4D space.
+now we have to use a higher dimensional sphere $S^3$ living in 4D space.
 
 <figure style="margin-top: 20px">
 <img height="300" src="images/Hypersphere.png" >
 <figcaption style="font-size: 0.6em; margin-top:-20px">
-The direct projection of the hypersphere onto $\mathbb R^3$.
+The direct projection of $S^3$ onto $\mathbb R^3$.
 </figcaption>
 </figure>
 
@@ -295,10 +295,30 @@ and now we see it naturally coming back around the sphere towards us again
 A famous theorem in algebraic geometry says that smooth cubic surfaces contain
 27 straight lines!
 
+<img src="images/cubicmodel1.jpeg" height="150" data-preview-image data-preview-fit="cover">
+<img src="images/cubicmodel2.jpeg" height="150" data-preview-image data-preview-fit="cover">
+<img src="images/cubicmodel3.jpeg" height="150" data-preview-image data-preview-fit="cover">
+<img src="images/cubicmodel4.jpeg" height="150" data-preview-image data-preview-fit="cover">
 
+Before computers, models made of plaster, wood, metal, string and paper mâché
+were used as a pedagogical tool. Students would learn about the model by
+sketching it.
 
-Before computers, models were made of plaster and used for drawing studies of
-the surface.
+Note:
+
+These are some models that Katie and I had the pleasure of seeing last week at the 
+Maison Poincaré.
+
+Before computers, models made of plaster, wood, metal, string and paper mâché
+were used as a pedagogical tool. Students would learn about the model by
+sketching it.
+
+One of the difficulties of these models is that you must carefully pick
+coefficients so that none of the interesting structure is "at infinity" and
+subsequently not pictured by the model.
+
+We have followed in the footsteps of these students by producing our own
+illustrations of these surfaces.
 
 ---
 
