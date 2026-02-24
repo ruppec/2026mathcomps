@@ -1,0 +1,455 @@
+<!-- This layout is for simple shadertoy programs without textures, multiple buffers or input. If more features are needed one can write it explicitly in the post or write a new layout that uses captures
+     -->
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Earth in S^3</title>
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <style>
+      html, body {
+          margin: 0;
+          height: 100%;
+      }
+      #drawCanvas {
+          width: 100%;
+          height: 100%;
+          display: block;
+      }
+
+      #title {
+          position: absolute;
+          top: 0px;
+          left: 80px;
+          padding: 12px;
+          z-index: 100;
+          display: block;
+          font-family: Monaco, monospace;
+          color: white;
+          background: rgba(0,0,0,0.5)
+      }
+
+      #credit {
+          position: absolute;
+          bottom: 0px;
+          right: 0px;
+          font-family: Monaco, monospace;
+          color: white;
+          background: rgba(0,0,0,0.5);
+          font-size: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="drawCanvas" width=500 height=500></canvas>
+    <script src="/ShaderToyLite.js"></script>
+    <script id="Image" type="x-shader/x-fragment">
+      /**    Feel free to use your own textures   **/
+/*
+The current default texture doesn't easily convey
+the stretching happening.
+
+I used this shadertoy to learn how to add textures
+https://www.shadertoy.com/view/lsGGDd
+This shader is made to work well with those textures
+so you can just copy and paste the commands written there
+into the JS console on this page.
+
+gShaderToy.SetTexture(0, {mSrc:'https://dl.dropboxusercontent.com/s/88u2uo8dxdmgzxo/world2.jpg?dl=0', mType:'texture', mID:1, mSampler:{ filter: 'linear', wrap: 'repeat', vflip:'false', srgb:'false', internal:'byte' }});
+gShaderToy.SetTexture(1, {mSrc:'https://dl.dropboxusercontent.com/s/5rdhhnvnr5mochq/cloud2.jpg?dl=0', mType:'texture', mID:1, mSampler:{ filter: 'linear', wrap: 'repeat', vflip:'false', srgb:'false', internal:'byte' }});
+gShaderToy.SetTexture(2, {mSrc:'https://dl.dropboxusercontent.com/s/ojl5zoxgbdn5w5s/light2.jpg?dl=0', mType:'texture', mID:1, mSampler:{ filter: 'linear', wrap: 'repeat', vflip:'false', srgb:'false', internal:'byte' }});
+
+*/
+
+/* TODO: Implement diffuse and specular lighting */
+
+
+#define PI 3.14159
+#define TWOPI 2.*PI
+
+#define MAX_DISTANCE 2.*PI
+#define MAX_STEPS 100
+#define EPSILON 0.0001
+
+const vec4 ORIGIN = vec4(0,0,0,1);
+
+struct Ray{
+    vec4 o;//ray origin
+    vec4 d;//ray direction
+};
+
+Ray applyIso(Ray r, mat4 iso) {
+    return Ray(iso*r.o, iso*r.d);
+}
+
+struct Intersection{
+    float t;//distance
+    int id;//id of object intersected with
+};
+
+struct Material{
+    bool isDiffuse;
+    bool isSpectral;
+    //bool isMirror;
+    int shininess;
+};
+
+mat4 makeTranslation(vec4 p) {
+    mat4 matrix = mat4(1.);
+    vec3 u = p.xyz;
+    float c1 = length(u);
+    if (c1 == 0.) {
+        return matrix;
+    }
+
+    float c2 = 1. - p.w;
+    u = normalize(u);
+    mat4 m = mat4(
+    0, 0, 0, -u.x,
+    0, 0, 0, -u.y,
+    0, 0, 0, -u.z,
+    u.x, u.y, u.z, 0
+    );
+    matrix = matrix + c1 * m + c2 * m * m;
+    return matrix;
+}
+
+//returns point in space distance t along Ray r.
+vec4 rayFlow(Ray r, float t) {
+    return r.o * cos(t) + r.d * sin(t);
+}
+
+//light intensity as a function of distance
+float lightIntensity(float t) {
+    return 1./t;//TODO CHANGE!!
+}
+
+// sphere in local coords: centered at (0,0,0,1)
+float sdfSphere(vec4 pos, float r) {
+    return acos(pos.w)-r;
+}
+
+// pos in sphere-local coordinates
+vec2 uvSphere(vec4 pos) {
+    vec4 dir = normalize(pos-ORIGIN);
+    float sinPhi = length(dir.xy);
+    float cosPhi = dir.z;
+    float u = atan(dir.x, dir.y)/(2.*PI) + 0.5;
+    float v = atan(sinPhi, cosPhi)/PI + 0.;
+    return vec2(u,v);
+}
+
+vec3 inverseHypersphericalCoordinates(vec4 pos) {
+    vec3 phi;
+    phi.x = atan(length(pos.xyz),pos.w);
+    phi.y = atan(length(pos.xy),pos.z);
+    phi.z = atan(abs(pos.x),pos.y);
+    return phi;
+}
+
+
+
+
+
+
+#define NO_INTERSECTION -1
+#define WITHIN_VOLUME -2
+
+/**         CUBIC SURFACE        **/
+#define CUBIC_ID 1
+
+float cubicForm(vec4 x) {
+    float sum = dot(x,vec4(1));
+    return x.x*x.x*x.x + x.y*x.y*x.y + x.z*x.z*x.z + x.w*x.w*x.w
+          - sum*sum*sum;
+}
+
+float trilinearForm(vec4 x, vec4 y, vec4 z) {
+    return (1./6.)*(cubicForm(x+y+z)
+            - cubicForm(x+y) - cubicForm(x+z) - cubicForm(y+z)
+            + cubicForm(x) + cubicForm(y) + cubicForm(z));
+}
+
+// the equation to satisfy is au^3 + bu^2 + cu + d
+// where u=tan(t)
+float traceCubic(Ray r) {
+    float a = cubicForm(r.d);
+    float b = trilinearForm(r.d,r.d,r.o);
+    float c = trilinearForm(r.d,r.o,r.o);
+    float d = cubicForm(r.o);
+    
+    float delta0 = b*b-3.*a*c;
+    float delta1 = 2.*b*b*b - 9.*a*b*c - 27.*a*a*d;
+    float C = pow((delta1 + sqrt(delta1*delta1 - 4.*delta0*delta0*delta0))/2.,1./3.);
+    //check for 0 division
+    float x = - 1./(3.*a)*(b + C + delta0 / C);
+    float t = atan(x);
+    if (t < 0.) t += PI/2.;//make atan2 -> [0,pi]
+    return t;
+}
+
+vec4 gradCubic(vec4 x) {
+    vec4 sum = vec4(dot(x,vec4(1)));
+    return 3.*x*x - 3.*sum*sum ;
+}
+
+
+/**          EARTH OBJECT          **/
+#define EARTH_ID 2
+// inverse modeling isometry
+mat4 invMEarth() {
+    float rot = iTime/4.;
+    mat4 modeling = makeTranslation(normalize(vec4(0,0,-1,0)))
+        * mat4(cos(rot), 0., -sin(rot), 0.,
+               sin(rot), 0., cos(rot), 0.,
+               0., 1., 0., 0.,
+               0., 0., 0., 1.);
+    return inverse(modeling);
+}
+
+float sdfEarth(vec4 pos) {
+    return sdfSphere(invMEarth()*pos,0.3);
+}
+
+Material earthMaterial = Material(true, false, 64);
+
+/**          SUN OBJECT           **/
+
+#define SUN_ID 3
+mat4 invMSun() {
+    mat4 modeling = makeTranslation(normalize(vec4(0,1,0,0)));
+    return inverse(modeling);
+}
+float sdfSun(vec4 pos) {
+    return sdfSphere(invMSun()*pos, 0.05);
+}
+
+
+/*            SCENE OBJECT          */
+//stores the minimum of d1 and d2 in d2
+//returns true if changes made
+bool opU(in float d1, inout float d2){
+	if(d1 < d2) {
+        d2 = d1;
+        return true;//yes we updated d2
+    }
+    return false;//no we didn't update d2
+}
+
+//returns sdf, modifies id to closest object
+float sdfScene(vec4 pos, out int id) {
+    float sd = MAX_DISTANCE;
+    id = NO_INTERSECTION; 
+   
+    if(opU(sdfEarth(pos), sd)) id = EARTH_ID;//if earth is closest thing
+    if(opU(sdfSun(pos), sd)) id = SUN_ID;
+    return sd;
+}
+/*              END OBJECTS          */
+
+float marchRay(Ray r, out int id) {
+    float t=0.;
+    float sd = sdfScene(rayFlow(r,t), id);
+    if(sd < -EPSILON) {
+            id = WITHIN_VOLUME;
+            return t;
+        }
+    for(int i = 0; i<MAX_STEPS; i++) {
+        sd = sdfScene(rayFlow(r,t), id);
+        if(abs(sd) < EPSILON) break;
+        if(t > MAX_DISTANCE) {
+            id = NO_INTERSECTION;
+            break;
+        }
+        
+        t+=sd;
+    }
+    return t;
+}
+
+mat4 pose(float theta) {
+    float phi = 0.35;
+    return mat4(1.0, 0.0, 0.0, 0.0,
+                 0.0, 1.0, 0.0, 0.0,
+                 0.0, 0.0, cos(theta), sin(theta),
+                 0.0, 0.0, -sin(theta), cos(theta))
+         * mat4(cos(phi), 0.0, 0.0, sin(phi),
+                 0.0, 1.0, 0.0, 0.0,
+                 0.0, 0.0, 1.0, 0.0,
+                 -sin(phi), 0.0, 0.0, cos(phi));
+}
+
+mat4 mouseRotation() {
+    float xrot = 0.0; // About x-axis
+    float yrot = 0.0; // About y-axis
+    if (iMouse.x > 0.0) {
+        yrot = TWOPI*(iMouse.x-0.5*iResolution.x)/iResolution.x;
+        xrot = TWOPI*(iMouse.y-0.5*iResolution.y)/iResolution.y;
+    }
+    mat3 mx = mat3(1,0,0,
+                 0,cos(xrot),sin(xrot),
+                 0,-sin(xrot),cos(xrot));
+    mat3 my = mat3(cos(yrot),0,sin(yrot),
+                 0,1,0,
+                 -sin(yrot),0,cos(yrot));
+    return mat4(mx*my);
+}
+
+vec3 shadeFragment(vec4 pos, Ray r, Intersection inter,
+                    Material mater) {
+    vec3 col = vec3(1.);
+    if(mater.isDiffuse)
+        col = col;
+    return col;
+}
+
+//generates ray in world space from given pixel
+Ray pixelToRay(in vec2 fragCoord){
+    //construct camera at (0,0,0,1) looking in the -z
+    vec2 uv = fragCoord/iResolution.xy;
+    float left=-2., right=2., bottom=-1., top=1.;
+    vec3 pview = vec3(uv*vec2(right-left,top-bottom)
+                        + vec2(left,bottom),-1.);
+    Ray r;
+    r.d = vec4(normalize(pview),0);//ray direction
+    r.o = vec4(vec3(0),1);
+    
+    return r;
+}
+
+
+//gets intersection point given ray
+Intersection intersectScene(Ray r) {
+    Intersection inter = Intersection(MAX_DISTANCE, NO_INTERSECTION);
+    
+    // get raymarched intersection
+    inter.t = marchRay(r, inter.id);
+    
+    //get raytraced intersection
+    //if(opU(traceCubic(r), inter.t)) inter.id = CUBIC_ID;
+    
+    return inter;
+}
+
+vec3 getInterColor(Ray r, Intersection inter) {
+    vec3 col = vec3(0.5);
+    vec4 pos = rayFlow(r,inter.t);
+    switch(inter.id) {
+        case NO_INTERSECTION:
+        col = vec3(.1);
+        break;
+        case WITHIN_VOLUME:
+        col = vec3(1,0,0);
+        break;
+        
+        
+        case CUBIC_ID:
+        col = inverseHypersphericalCoordinates(gradCubic(pos))/vec3(PI,PI,2.*PI);
+        break;
+        
+        case SUN_ID:
+        col = vec3(0.9,0.9,0.8);
+        break;
+        
+        case EARTH_ID://earth
+        //compute intersection point in local coords
+        vec4 localPos = invMEarth()*pos;
+        vec2 uv = uvSphere(localPos);
+        vec3 earth = texture(iChannel0, uv).rgb;
+        vec3 clouds = texture(iChannel1, uv).rgb;
+        
+        col = earth+clouds;
+        
+        vec4 normal = normalize(localPos);
+        col*=shadeFragment(pos, r, inter, earthMaterial);
+    }
+    
+    
+    return col;
+}
+
+void mainImage( out vec4 fragColor, in vec2 fragCoord )
+{
+    Ray r = pixelToRay(fragCoord);
+    r = applyIso(r,mouseRotation());
+    r = applyIso(r,pose(iTime/8.));
+    Intersection inter = intersectScene(r);
+    vec3 col = getInterColor(r, inter);
+    fragColor = vec4(col,1.0);
+}
+    </script>
+    <script type="module">
+      /*
+      import GUI from 'https://cdn.jsdelivr.net/npm/lil-gui@0.21/+esm';
+      const gui = new GUI();
+
+      const controlObject = {
+          animate: true,
+          reset: function() { toy.reset() },
+          scale: 1
+      }
+
+      gui.add(controlObject, 'animate').onChange( value => {
+          if(value)
+              toy.play();
+          else toy.pause();
+      });
+      gui.add(controlObject, 'reset');
+
+      const canvas = document.getElementById('drawCanvas');
+      const widthControl = gui.add(canvas, 'width', .25*window.innerWidth, window.innerWidth, 10);
+      const heightControl = gui.add(canvas, 'height', .25*window.innerHeight, window.innerHeight, 10);
+      gui.add(controlObject, 'scale', .25, 1.).onChange( scale => {
+          canvas.width = window.innerWidth*scale;
+          canvas.height = window.innerHeight*scale;
+          widthControl.updateDisplay();
+          heightControl.updateDisplay();
+      });
+      */
+
+      import Stats from 'https://cdnjs.cloudflare.com/ajax/libs/stats.js/r17/Stats.min.js';
+      const stats = new Stats();
+      //stats.showPanel(0);
+      //document.body.appendChild(stats.dom);
+
+
+
+      var toy = new ShaderToyLite('drawCanvas');
+      var gl = document.getElementById("drawCanvas").getContext('webgl2'); 
+      const texture = gl.createTexture();
+      gl.bindTexture(gl.TEXTURE_2D, texture);
+
+      // Fill with a single blue pixel while the image loads
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array([0, 0, 255, 255]));
+
+      const image = new Image();
+      image.crossOrigin = "anonymous"; // Needed if loading from a different domain
+      image.onload = () => {
+          gl.bindTexture(gl.TEXTURE_2D, texture);
+          gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
+          gl.generateMipmap(gl.TEXTURE_2D);
+      };
+      image.src = 'images/earth.jpg';
+
+      toy.setCommon('');
+      toy.addTexture(texture, 'earth');
+      toy.setImage({source: document.getElementById("Image").innerText,
+                    iChannel0: 'earth'});
+
+
+      // Wrap the existing requestAnimationFrame
+      const originalRAF = window.requestAnimationFrame;
+      window.requestAnimationFrame = function(callback) {
+          return originalRAF(function(time) {
+              stats.begin();
+              callback(time);
+              stats.end();
+          });
+      };
+
+      toy.play()
+    </script>
+
+  </body>
+</html>

@@ -54,41 +54,60 @@ Note: The picture circa 1423 is Masolino da Panicale's "St. Peter Healing a
 Cripple and the Raising of Tabitha," the earliest extant artwork known to use a
 consistent vanishing point.
 
+Parallel lines are continued and found to meet at the vanishing point whose
+position depends on the direction of the parallel lines.
+
+Different direction in the scene and you get a different vanishing point.
+
 ---
 
-Parallel lines can never touch, but the painter still draws
-them converging at a point "infinitely far away."
+The painter colors each point of the canvas by following his line of sight until
+it hits an object.
 
-<img height="300" src="images/penroseillustration.png" data-preview-image data-preview-fit="cover">
+<img height="250" style="margin:0;" src="images/penroseillustration.png" data-preview-image data-preview-fit="cover">
 
-*Projective Geometry* is when we take these vanishing points seriously by
-adjoining "points at infinity" to normal Euclidean space.
+The line for the vanishing point never hits the scene, so the vanishing point is
+placed infinitely far away.
+
+We include these points at infinity into our space to get *projective geometry*.
 
 Note:
-In this picture the artist can point to the vanishing point on his drawing,
-but following that line of sight won't actually reach anything in the real
-world.
+*click the photo*
 
-What we'll do is pretend that the vanishing point exists in the real world and
-determine it's relation to the other points using the drawing.
+You can trace the painters line of sight through the page and out into the scene
+
+The line for the vanishing point never hits the scene so the vanishing point
+could only be placed infinitely far away.
+
+We include these points at infinity into our scene to get projective geometry.
+
+At this point your calculus teacher would protest because I
+am using infinity like a real distance that can exist.
+
+If you suspend your discomfort I will tell you how a concrete way of
+representing these points at infinity.
 
 ---
 
-
-We can represent many points of the *projective plane* using the artistic method
-of perspective projection.
+Points of the *projective plane* can be represented using the artistic method of
+perspective projection.
 
 <img height="350" src="images/Vanishing_point.svg">
 
 **Fact**: In the projective plane *any* two lines intersect at exactly one point.
 
 Note:
-Here we can represent many points of the 2D space on the bottom using
-points on the image plane. What's labeled as the vanishing point is just the way
-of representing the vanishing point on the image plane.
+Points in the ground plane give you a unique point in the image plane by
+following the line of sight to O.
 
-Instead of saying that non-parallel lines intersect at one point, we can say that
-any two lines intersect at exactly one point.
+Even our vanishing points which don't strictly exist in the scene can be represented
+on the image plane.
+
+This diagram shows that even parallel lines must meet at a point when
+represented on the image plane.
+
+This highlights our first property of the projective plane. Any two lines
+intersect at exactly one point.
 
 ---
 
@@ -107,12 +126,22 @@ Some nice theorems in projective space:
   </div>
 </div>
 
-Note: We don't have time in this presentation to explain how all of this works.
-But know that projective space pops up all over math and physics.
+Note:
+
+There are lots of nice results that are only true in projective space such as
+Bezout's theorem which counts the number of intersection points of curves
+according to their degree.
+
+In projective space we find that all smooth conic sections are equivalent.
+
+Every theorem in projective space has a dual where you swap the words "line" and
+"point".
+
+We don't have time in this presentation to explain how all of this works.  But
+know that projective space pops up in important ways across math and even
+physics.
 
 ---
-
-### Plane Model of Projective Space
 
 Using the artistic model of projective space shown before we are unable to
 represent all points.
@@ -123,7 +152,13 @@ represent all points.
 
 
 Note:
-In fact in the way it's shown here we aren't representing points behind O either.
+But back to our model of projective space.
+
+We run into a problem when we try and represent a point directly below O. The
+line of sight doesn't intersect the image plane.
+
+In fact in the way it's shown here we aren't representing points behind O
+either.
 
 ---
 
@@ -133,6 +168,9 @@ In fact in the way it's shown here we aren't representing points behind O either
 
 Take the line going from the Eye to some point $P$ on the plane.  The intersection
 of that line and the sphere gives us a representative point.
+
+Note:
+
 
 ---
 
@@ -224,6 +262,7 @@ And this aligns really well with what properties we want to help us visualize pr
 ---
 
 [Include the interactive demo of the earth in S^3 in an iframe]
+<iframe width="700" height="500" frameborder="0" src="earthdemo.html" allowfullscreen></iframe>
 
 Note:
 So what you see here is what the Earth would look like if we were moving along a geodesic in s3, so what feels to us like a straight line but of course is not
