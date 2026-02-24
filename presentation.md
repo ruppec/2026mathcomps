@@ -399,12 +399,6 @@ Now we take the pencil of planes that pass through that line. Each plane cuts th
 
 # How To Make Beautiful Images Using Math
 
-[[ Quickly explain the problem of rendering]]
-[[ Explain ray tracing/raymarching with an SDF and then say what our naive
-approximate SDF is with a code block and LaTeX formula]]
-
-[[ If there is time we go into Descartes Method in Berntein Basis]]
-
 ---
 ## Rendering
 
@@ -455,30 +449,7 @@ In our spherical/projective world, rays may not be straight, but are geodesics, 
 
 ---
 
-# *Fein.*
+# *Thank you for your attention.*
 
 Any questions?
-
-<img height="300" src="images/Albrecht_durer_ray_tracing_enhanced.png">
-
-[[this slide should include some things to make asking questions easier, perhaps
-formulas, diagrams, or a slideshow of nice renders we've made]]
-
----
-
-
-
-
-[[this is old stuff]]
-
-### A better way to view $\mathbb{P^2}$
-discuss the double cover from S^2
-
-
-<!-- We use data-src instead of src attribute to enable --
-  -- lazy-loading by reveal.js -->
-<iframe data-src="example.html"></iframe>
-
-
-
 
