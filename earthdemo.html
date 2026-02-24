@@ -199,7 +199,7 @@ vec4 gradCubic(vec4 x) {
 #define EARTH_ID 2
 // inverse modeling isometry
 mat4 invMEarth() {
-    float rot = iTime/4.;
+    float rot = 0.;
     mat4 modeling = makeTranslation(normalize(vec4(0,0,-1,0)))
         * mat4(cos(rot), 0., -sin(rot), 0.,
                sin(rot), 0., cos(rot), 0.,
@@ -269,7 +269,7 @@ float marchRay(Ray r, out int id) {
 }
 
 mat4 pose(float theta) {
-    float phi = 0.35;
+    float phi = 0.;
     return mat4(1.0, 0.0, 0.0, 0.0,
                  0.0, 1.0, 0.0, 0.0,
                  0.0, 0.0, cos(theta), sin(theta),
