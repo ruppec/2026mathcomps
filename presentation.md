@@ -206,6 +206,7 @@ The 3-sphere lives in four dimensions, so our intution for it comes via analogy
 
 Geodesics are still great circles, two geodesics will converge at the antipodal point, and there is no infinity to escape to.
 
+<img src="images/Hypersphere.gif" height="300">
 
 [Explain spherical geometry for S^2 and then argue by analogy that it works
 similarly in S^3.]
