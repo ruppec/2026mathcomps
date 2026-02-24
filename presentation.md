@@ -179,17 +179,32 @@ The direct projection of the hypersphere onto $\mathbb R^3$.
 
 ---
 
+# Geodesics on a Sphere
+
+In Euclidean flat space, the shortest path between two points is a straight line
+
+But we must redefine this notion if we restrict ourselves to the surface of a sphere
+
+
 [Define what a geodesic is by first defining a notion of distance on the sphere,
 and that the geodesic is the shortest path]
 
 Note: 
 
 In order to model projective space using a sphere, we need to understand the geometry of the sphere itself.
-In Euclidean space, a straight line is the shortest path between two points.
-But given that we are not allowed to leave the surface of the sphere we must redefine distance to be measured along the surface
-the shortest paths, or geodesics, are no longer ordinary straight lines,  they are arcs of great circles, with a great circle being the intersection of a plane through the origin of the sphere, so the equator is a great circle, lines of longitude are great circles. 
+In Euclidean flat space, a straight line is the shortest path between two points.
+But if we must find this path given that we are not allowed to leave the surface of the sphere we must redefine distance to be measured along the surface
+meaning that the shortest paths, or geodesics, are no longer ordinary straight lines, they are the arcs of great circles, with a great circle defined as the intersection of a plane through the origin of the sphere with the sphere itself, so the equator is a great circle, lines of longitude are great circles. 
 
 ---
+
+# From $S^2$ to $S^3$
+
+
+The 3-sphere lives in four dimensions, so our intution for it comes via analogy
+
+Geodesics are still great circles, two geodesics will converge at the antipodal point, and there is no infinity to escape to.
+
 
 [Explain spherical geometry for S^2 and then argue by analogy that it works
 similarly in S^3.]
@@ -197,12 +212,12 @@ similarly in S^3.]
 
 Note:
 
-Everything I’ve just said about the 2-sphere also works one dimension higher. So the 2 sphere is like a ball living in 3 dimensional space, then the 3 sphere lives in four-dimensional space, and we can’t necessarily see it directly, but we can draw analogies and reason how things work on the 3-sphere. 
+Everything I’ve just said about the 2-sphere also works one dimension higher. So if we think of the 2 sphere as a ball living in 3 dimensional space, then the 3 sphere lives in four-dimensional space, and we can’t necessarily see it directly right in front of us like you can see a ball in front of you, but we can draw analogies to how things work on the 2 sphere and reason how things would work were we to live on the 3-sphere. 
 
-The most important property to us is that if you travel along a geodesic long enough, you don’t go off to infinity.
-You eventually reach the antipodal point, the exact opposite point on the sphere, and then return to where you started.
-So spherical geometry is compact you cannot escape. 
-And this is aligns exactly with what we need to visualize projective space 
+The most important property to us is that if you continue to travel along a geodesic, you don’t go off to infinity.
+You eventually reach the antipodal point, the exact opposite point to your starting point on the sphere, and then if you keep going you return to where you started.
+So spherical geometry is compact you cannot escape or run off . 
+And this aligns really well with what properties we want to help us visualize projective space, because if we send out two separate geodesics that seem like they would naturally diverge , they will actually converge at the antipodal point, and what we once thought of as infinity is simply where straight lines in our new universe come back together
 
 ---
 
@@ -211,8 +226,9 @@ And this is aligns exactly with what we need to visualize projective space
 Note:
 So what you see here is what the Earth would look like if we were moving along a geodesic in s3, so what feels to us like a straight line but of course is not
 
-As we move backward the earth gets smaller and smaller,  receding off into the distance, like we’d expect, but it never disappears. eventually, it shrinks down to a smallest size, that corresponds to reaching the antipodal point.
-And then something weird happens, it starts to get larger again. It’s not that we’ve started moving in the opposite direction, we are still going “straight”
+As we move backward the earth gets smaller and smaller,  receding off into the distance, like we’d expect, but it never disappears. eventually, it shrinks down to some smallest size, that corresponds to reaching the antipodal point.
+And then something weird happens, it starts to get larger again. It’s not that we’ve started moving in the opposite direction
+
 
 --- 
 
