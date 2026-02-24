@@ -225,8 +225,6 @@ But we must redefine this notion if we restrict ourselves to the surface of a sp
 
 <img height="300" src="images/download.png" >
 
-[Define what a geodesic is by first defining a notion of distance on the sphere,
-and that the geodesic is the shortest path]
 
 Note: 
 
@@ -246,10 +244,6 @@ Geodesics are still great circles, two geodesics will converge at the antipodal 
 
 <img src="images/Hypersphere.gif" height="300">
 
-[Explain spherical geometry for S^2 and then argue by analogy that it works
-similarly in S^3.]
-[Specifically discuss how geodesics converge at the antipodal point]
-
 Note:
 
 Everything I’ve just said about the 2-sphere also works one dimension higher. So if we think of the 2 sphere as a ball living in 3 dimensional space, then the 3 sphere lives in four-dimensional space, and we can’t necessarily see it directly right in front of us like you can see a ball in front of you, but we can draw analogies to how things work on the 2 sphere and reason how things would work were we to live on the 3-sphere. 
@@ -261,15 +255,21 @@ And this aligns really well with what properties we want to help us visualize pr
 
 ---
 
-[Include the interactive demo of the earth in S^3 in an iframe]
-<iframe width="700" height="500" frameborder="0" src="earthdemo.html" allowfullscreen></iframe>
+<iframe width="800" height="600" frameborder="0" src="earthdemo.html" allowfullscreen></iframe>
 
 Note:
-So what you see here is what the Earth would look like if we were moving along a geodesic in s3, so what feels to us like a straight line but of course is not
+So what we see in this visualization is the earth moving around the sphere along a geodesic in s3, as we remain at a fixed point. 
+as it approaches it of course grows larger in our view, and we are actually able to see more of it than we would in euclidean space, as our space has positive curvature.
 
-As we move backward the earth gets smaller and smaller,  receding off into the distance, like we’d expect, but it never disappears. eventually, it shrinks down to some smallest size, that corresponds to reaching the antipodal point.
-And then something weird happens, it starts to get larger again. It’s not that we’ve started moving in the opposite direction
+alright now we've entered the earth
 
+and now the earth is actually behind us but it remains visible since light rays travel around the sphere we can still see it, it's just oriented upside down 
+
+when the sphere reaches the antipodal point it actually takes up our entire screen, it wraps around us and the orientation flips
+
+it's smallest size is pi/2 radians away from us,   at the equator
+
+and now we see it naturally coming back around the sphere towards us again
 
 ---
 
