@@ -185,6 +185,7 @@ Considering both to be two representatives of the same point.
 Now points on the sphere above the $Z=0$ plane also have a meaning, given by
 their antipode.
 
+
 Note:
 
 It looks like the parallel lines are intersecting in two places.
@@ -303,6 +304,8 @@ A famous theorem in algebraic geometry says that smooth cubic surfaces contain
 Before computers, models made of plaster, wood, metal, string and paper mâché
 were used as a pedagogical tool. Students would learn about the model by
 sketching it.
+
+Images from Maison Poincaré, CC.
 
 Note:
 
@@ -459,3 +462,13 @@ In our spherical/projective world, rays may not be straight, but are geodesics, 
 
 Any questions?
 
+
+---
+
+## Sources
+
+All images are Creative Commons from Wikipedia, Maison Poincaré and this
+stackexchange post:
+https://math.stackexchange.com/questions/910414/parallel-lines-intersecting-in-the-projective-plane
+
+Coulon, Rémi, Elisabetta A. Matsumoto, Henry Segerman, and Steve J. Trettel. 2022. “Ray-Marching Thurston Geometries.” Experimental Mathematics 31 (4): 1197–277. https://doi.org/10.1080/10586458.2022.2030262.
