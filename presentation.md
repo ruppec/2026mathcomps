@@ -274,6 +274,9 @@ And then something weird happens, it starts to get larger again. It’s not that
 ---
 
 # New Images and Visualizations
+
+<iframe style="width: 100%; aspect-ratio: 16/9; border: none" src="cubic_demo/index.html"></iframe>
+
 [[Start running through visualizations as fast as we can and say they can check
 them out for themselves on their own time]]
 [[Maybe show affine varieties before showing the projective versions]]
