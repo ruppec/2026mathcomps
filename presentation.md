@@ -336,10 +336,10 @@ Now we take the pencil of planes that pass through that line. Each plane cuts th
 
 
 <div style="display: grid; height: 100vh; gap: 10px; padding: 10px; box-sizing: border-box; grid-template-columns: repeat(2, 1fr);">
-<img src="images/">
-<img src="images/">
-<img src="images/">
-<img src="images/">
+<img src="images/quartic1.png">
+<img src="images/quartic2.png">
+<img src="images/quartic3.png">
+<img src="images/quartic4.png">
 </div>
 
 ---
