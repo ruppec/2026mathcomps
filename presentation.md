@@ -383,6 +383,9 @@ Note:
 Just like our eyes!
 (line of sight) *whip noise*
 Signed distance function checks if we are outside or inside an object. 
+Tracing a geodesic is like following a path with your bike and not having to turn the handles
+
+
 ---
 
 ## But how to fast? SDF
