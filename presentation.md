@@ -255,6 +255,9 @@ You eventually reach the antipodal point, the exact opposite point to your start
 So spherical geometry is compact you cannot escape or run off . 
 And this aligns really well with what properties we want to help us visualize projective space, because if we send out two separate geodesics that seem like they would naturally diverge , they will actually converge at the antipodal point, and what we once thought of as infinity is simply where straight lines in our new universe come back together
 
+this is an extrinsic visualization of the hypersphere and its rotations but we are going to be doing intrinsic visualization so living in the space
+
+
 ---
 
 <iframe width="800" height="600" frameborder="0" src="earthdemo.html" allowfullscreen></iframe>
