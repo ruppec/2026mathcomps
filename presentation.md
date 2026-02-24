@@ -271,7 +271,7 @@ As we move backward the earth gets smaller and smaller,  receding off into the d
 And then something weird happens, it starts to get larger again. It’s not that we’ve started moving in the opposite direction
 
 
---- 
+---
 
 # New Images and Visualizations
 [[Start running through visualizations as fast as we can and say they can check
@@ -289,10 +289,57 @@ approximate SDF is with a code block and LaTeX formula]]
 [[ If there is time we go into Descartes Method in Berntein Basis]]
 
 ---
+## Rendering
 
-# *Fin.*
+We pretend each pixel on our computer is looking along a tiny line of sight. 
+
+Rendering means choosing what (color) we see at every single pixel from our POV
+
+### The Problem
+
+How can we quickly figure out what our camera sees first along each pixel-direction and do it one-million-times fast?
+
+---
+## Ray Tracing in Brief
+1. Shoot a ray out of the lens of the camera 
+2. Using an SDF, trace the ray's path until it hits an object
+3. Color the pixel using that hit point
+4. Use information from the geometry to create cool effects!
+
+
+<img height="300" src="images/cow.png">
+
+Note:
+Just like our eyes!
+(line of sight) *whip noise*
+Signed distance function checks if we are outside or inside an object. 
+---
+
+## But how to fast? SDF
+
+Approximate! Dont solve each intersection exactly, we use a signed distance function
+
+Tells us how far we are, and in what direction, from an object.
+
+In spherical geometry, we use a local estimate to tell us about our geometry
+
+Note:
+Use it to tell us how much we can move along our path safely (fawr -> big step, near -> smwall stwep)
+In our spherical/projective world, rays may not be straight, but are geodesics, yet marching logic is identical...step forward using a local distance estimate.
+
+
+
+
+
+
+
+---
+
+# *Fein.*
 
 Any questions?
+
+<img height="300" src="images/Albrecht_durer_ray_tracing_enhanced.png">
 
 [[this slide should include some things to make asking questions easier, perhaps
 formulas, diagrams, or a slideshow of nice renders we've made]]
