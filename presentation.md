@@ -179,7 +179,7 @@ The direct projection of the hypersphere onto $\mathbb R^3$.
 
 ---
 
-# Geodesics on a Sphere
+### Geodesics on a Sphere
 
 In Euclidean flat space, the shortest path between two points is a straight line
 
@@ -198,7 +198,7 @@ meaning that the shortest paths, or geodesics, are no longer ordinary straight l
 
 ---
 
-# From $S^2$ to $S^3$
+### From $S^2$ to $S^3$
 
 
 The 3-sphere lives in four dimensions, so our intution for it comes via analogy
