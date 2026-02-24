@@ -399,7 +399,6 @@ Now we take the pencil of planes that pass through that line. Each plane cuts th
 
 # How To Make Beautiful Images Using Math
 
----
 ## Rendering
 
 We pretend each pixel on our computer is looking along a tiny line of sight. 
@@ -411,7 +410,7 @@ Rendering means choosing what (color) we see at every single pixel from our POV
 How can we quickly figure out what our camera sees first along each pixel-direction and do it one-million-times fast?
 
 ---
-## Ray Tracing in Brief
+## Ray Marching in Brief
 1. Shoot a ray out of the lens of the camera 
 2. Using an SDF, trace the ray's path until it hits an object
 3. Color the pixel using that hit point
@@ -421,11 +420,13 @@ How can we quickly figure out what our camera sees first along each pixel-direct
 <img height="300" src="images/cow.png">
 
 Note:
-Just like our eyes!
+Just like our eyes! Hawk Tuah! 
 (line of sight) *whip noise*
 Signed distance function checks if we are outside or inside an object. 
 Tracing a geodesic is like following a path with your bike and not having to turn the handles
 
+Ray tracing would be when we intersect rays with a rasterized mesh. Our scenes arent defined by discrete triangles,
+but by implicit equations, so we walk along the ray until we reach the surface
 
 ---
 
@@ -437,11 +438,11 @@ Tells us how far we are, and in what direction, from an object.
 
 In spherical geometry, we use a local estimate to tell us about our geometry
 
+<img height="300" src="images/ray_march.png">
+
 Note:
 Use it to tell us how much we can move along our path safely (fawr -> big step, near -> smwall stwep)
 In our spherical/projective world, rays may not be straight, but are geodesics, yet marching logic is identical...step forward using a local distance estimate.
-
-
 
 
 
