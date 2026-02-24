@@ -408,6 +408,8 @@ Rendering means choosing what (color) we see at every single pixel from our POV
 ### The Problem
 
 How can we quickly figure out what our camera sees first along each pixel-direction and do it one-million-times fast?
+Note:
+We basically steal the Renaissance painter's trick: every pixel is a tiny line of sight.
 
 ---
 ## Ray Marching in Brief
@@ -416,8 +418,8 @@ How can we quickly figure out what our camera sees first along each pixel-direct
 3. Color the pixel using that hit point
 4. Use information from the geometry to create cool effects!
 
-
-<img height="300" src="images/cow.png">
+<img height="300" src="images/ray_march.png">
+<!-- <img height="300" src="images/cow.png"> -->
 
 Note:
 Just like our eyes! Hawk Tuah! 
@@ -438,14 +440,11 @@ Tells us how far we are, and in what direction, from an object.
 
 In spherical geometry, we use a local estimate to tell us about our geometry
 
-<img height="300" src="images/ray_march.png">
+
 
 Note:
 Use it to tell us how much we can move along our path safely (fawr -> big step, near -> smwall stwep)
 In our spherical/projective world, rays may not be straight, but are geodesics, yet marching logic is identical...step forward using a local distance estimate.
-
-
-
 
 
 ---
