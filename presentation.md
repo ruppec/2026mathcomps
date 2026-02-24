@@ -292,10 +292,36 @@ and now we see it naturally coming back around the sphere towards us again
 
 ## Cubic Surface With 27 Lines
 
+A famous theorem in algebraic geometry says that smooth cubic surfaces contain
+27 straight lines!
+
+
+
+Before computers, models were made of plaster and used for drawing studies of
+the surface.
+
+---
+
+## Cubic Surface With 27 Lines
+
 <iframe style="width: 100%; aspect-ratio: 16/8; border: none; margin: 0;" src="cubic_demo/index.html"></iframe>
 
 The coefficient minimap shows where the surface becomes singular and the
 topology changes.
+
+Note:
+This is our software in action. An interactive demo that lets you move around
+the 3-sphere viewing a specific cubic surface.
+
+The minimap at the bottom left represents the coefficients of the defining cubic
+polynomial in a slice of the full parameter space. The white curves on this
+minimap denote the singular locus and the different colors represent different
+real topology that the surface can have.
+
+For example in the grey region the surface is topologically like a plane.  In
+the blue region the surface contains that plane and a topological sphere.  In
+the maroon region the surface has the most complicated topology, and has 27 real
+lines.
 
 ---
 
@@ -334,11 +360,12 @@ Now we take the pencil of planes that pass through that line. Each plane cuts th
 ---
 
 
-<div style="display: grid; height: 100vh; gap: 10px; padding: 10px; box-sizing: border-box; grid-template-columns: repeat(2, 1fr);">
-<img src="images/quartic1.png">
-<img src="images/quartic2.png">
-<img src="images/quartic3.png">
-<img src="images/quartic4.png">
+<div style="display: grid; height: 50vh; gap: 10px; padding: 10px; box-sizing:
+border-box; grid-template-rows: repeat(2, 1fr); grid-template-columns: repeat(2, 1fr)">
+<img style="height: 100%" src="images/quartic2.png">
+<img style="height: 100%" src="images/quartic3.png">
+<img style="height: 80%" src="images/quartic4.png">
+<img style="height: 80%" src="images/quartic1.png">
 </div>
 
 Note:
