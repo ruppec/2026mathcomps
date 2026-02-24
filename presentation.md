@@ -185,7 +185,8 @@ In Euclidean flat space, the shortest path between two points is a straight line
 
 But we must redefine this notion if we restrict ourselves to the surface of a sphere
 
-
+<figure style="margin-top: 20px">
+<img height="300" src="download.png" >
 
 [Define what a geodesic is by first defining a notion of distance on the sphere,
 and that the geodesic is the shortest path]
