@@ -228,7 +228,7 @@ But we must redefine this notion if we restrict ourselves to the surface of a sp
 
 Note: 
 
-In order to model projective space using a sphere, we need to understand the geometry of the sphere itself.
+In order to model projective space using a sphere, we need to understand the geometry of living on the sphere itself.
 In Euclidean flat space, a straight line is the shortest path between two points.
 But if we must find this path given that we are not allowed to leave the surface of the sphere we must redefine distance to be measured along the surface
 meaning that the shortest paths, or geodesics, are no longer ordinary straight lines, they are the arcs of great circles, with a great circle defined as the intersection of a plane through the origin of the sphere with the sphere itself, so the equator is a great circle, lines of longitude are great circles. 
