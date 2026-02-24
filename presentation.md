@@ -219,9 +219,9 @@ The direct projection of the hypersphere onto $\mathbb R^3$.
 
 ### Geodesics on a Sphere
 
-In Euclidean flat space, the shortest path between two points is a straight line
+In Euclidean flat space, the shortest path between two points is a straight line.
 
-But we must redefine this notion if we restrict ourselves to the surface of a sphere
+But we must redefine this notion if we restrict ourselves to the surface of a sphere.
 
 <img height="300" src="images/download.png" >
 
@@ -232,6 +232,8 @@ In order to model projective space using a sphere, we need to understand the geo
 In Euclidean flat space, a straight line is the shortest path between two points.
 But if we must find this path given that we are not allowed to leave the surface of the sphere we must redefine distance to be measured along the surface
 meaning that the shortest paths, or geodesics, are no longer ordinary straight lines, they are the arcs of great circles, with a great circle defined as the intersection of a plane through the origin of the sphere with the sphere itself, so the equator is a great circle, lines of longitude are great circles. 
+
+and actually in spherical geometry, light rays themselves follow geodesics, so every ray in our graphics visualizations are moving along great circles in s3
 
 ---
 
