@@ -328,7 +328,7 @@ Note:
 To the experts in the room, this is a picture of an elliptic K3 surface, meaning
 the surface is an elliptic fibration over $\mathbb P^1$.
 
-What you’re seeing is a real quartic surface inside the 3-sphere, defined implicitly by a homogeneous degree-four polynomial in four variables. The polynomial is built so that it always contains a fixed line, which appears here in blue. So algebraically, we’re looking at a 4-parameter family of quartic surfaces in projective three-space, each one containing the same line.
+What you’re seeing is a real quartic surface inside the 3-sphere, defined implicitly by a homogeneous degree-four polynomial in four variables. The polynomial is built so that it always contains a fixed line, which appears here in blue. 
 Now we take the pencil of planes that pass through that line. Each plane cuts the quartic in a degree-four curve, but because the line is already contained in the surface, the intersection splits into that fixed line together with a cubic curve.  At special angles, the cubic degenerates and that’s the moment where you see the pink intersection curve change type. So visually, this animation is showing a pencil of elliptic curves living on a quartic surface.
 
 ---
@@ -345,7 +345,7 @@ Note:
 To the experts in the room, this is a picture of an elliptic K3 surface, meaning
 the surface is an elliptic fibration over $\mathbb P^1$.
 
-What you’re seeing is a real quartic surface inside the 3-sphere, defined implicitly by a homogeneous degree-four polynomial in four variables. The polynomial is built so that it always contains a fixed line, which appears here in blue. So algebraically, we’re looking at a 4-parameter family of quartic surfaces in projective three-space, each one containing the same line.
+What you’re seeing is a real quartic surface inside the 3-sphere, defined implicitly by a homogeneous degree-four polynomial in four variables. The polynomial is built so that it always contains a fixed line, which appears here in blue. 
 Now we take the pencil of planes that pass through that line. Each plane cuts the quartic in a degree-four curve, but because the line is already contained in the surface, the intersection splits into that fixed line together with a cubic curve.  At special angles, the cubic degenerates and that’s the moment where you see the pink intersection curve change type. So visually, this animation is showing a pencil of elliptic curves living on a quartic surface.
 
 ---
