@@ -260,18 +260,23 @@ And this aligns really well with what properties we want to help us visualize pr
 <iframe width="800" height="600" frameborder="0" src="earthdemo.html" allowfullscreen></iframe>
 
 Note:
-So what we see in this visualization is the earth moving around the sphere along a geodesic in s3, as we remain at a fixed point. 
+
+So what we see in this visualization is the earth moving along a geodesic in s3, as we remain at a fixed point. 
 as it approaches it of course grows larger in our view, and we are actually able to see more of it than we would in euclidean space, as our space has positive curvature.
 
 alright now we've entered the earth
 
-and now the earth is actually behind us but it remains visible since light rays travel around the sphere we can still see it, it's just oriented upside down 
+and now the earth is actually behind us but it remains visible since light rays are allowed to travel all the way around the sphere we can still see it, it's just oriented upside down 
 
-when the sphere reaches the antipodal point it actually takes up our entire screen, it wraps around us and the orientation flips
+when the sphere reaches the antipodal point it actually takes up our entire screen, and this is because the object is now the same distance from us in every direction so every light ray we emit is hitting it 
 
-it's smallest size is pi/2 radians away from us,   at the equator
+
+so as it passes the antipode it appears to wrap around us and the orientation flips
+
+and now it's coming back towards us, but it's actually shrinking because it's smallest size is pi/2 radians away from us, at the equator
 
 and now we see it naturally coming back around the sphere towards us again
+
 
 ---
 
