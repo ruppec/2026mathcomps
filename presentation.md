@@ -399,6 +399,8 @@ Now we take the pencil of planes that pass through that line. Each plane cuts th
 
 # How To Make Beautiful Images Using Math
 
+---
+
 ## Rendering
 
 We pretend each pixel on our computer is looking along a tiny line of sight. 
