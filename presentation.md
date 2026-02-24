@@ -432,7 +432,7 @@ but by implicit equations, so we walk along the ray until we reach the surface
 
 ---
 
-## But how to fast? SDF
+## How do we make things Fast?
 
 Approximate! Dont solve each intersection exactly, we use a signed distance function
 
