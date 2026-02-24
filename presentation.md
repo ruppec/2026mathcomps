@@ -285,11 +285,49 @@ and now we see it naturally coming back around the sphere towards us again
 
 # New Images and Visualizations
 
-<iframe style="width: 100%; aspect-ratio: 16/9; border: none" src="cubic_demo/index.html"></iframe>
-
 [[Start running through visualizations as fast as we can and say they can check
 them out for themselves on their own time]]
 [[Maybe show affine varieties before showing the projective versions]]
+
+---
+
+## Cubic Surface With 27 Lines
+
+<iframe style="width: 100%; aspect-ratio: 16/8; border: none; margin: 0;" src="cubic_demo/index.html"></iframe>
+
+The coefficient minimap shows where the surface becomes singular and the
+topology changes.
+
+---
+
+<div style="display: grid; height: 100vh; gap: 10px; padding: 10px; box-sizing: border-box; grid-template-columns: repeat(2, 1fr);">
+<img src="images/cubic1.png">
+<img src="images/cubic2.png">
+<img src="images/cubic3.png">
+<img src="images/cubic4.png">
+</div>
+
+---
+
+<div style="display: grid; height: 100vh; gap: 10px; padding: 10px; box-sizing: border-box; grid-template-columns: repeat(2, 1fr);">
+<img src="images/cubic5.png">
+<img src="images/cubic6.png">
+<img src="images/cubic7.png">
+<img src="images/cubic8.png">
+</div>
+
+---
+
+## Degree 4 Surface Containing a Line
+
+<iframe style="width: 100%; aspect-ratio: 16/8; border: none; margin: 0;" src="quartic_demo/index.html"></iframe>
+
+A plane containing the line intersected with the surface gives a degenerate
+degree 4 curve of a line and a degree 3 curve.
+
+Note:
+To the experts in the room, this is a picture of an elliptic K3 surface, meaning
+the surface is an elliptic fibration over $\mathbb P^1$.
 
 ---
 
