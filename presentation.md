@@ -182,15 +182,37 @@ The direct projection of the hypersphere onto $\mathbb R^3$.
 [Define what a geodesic is by first defining a notion of distance on the sphere,
 and that the geodesic is the shortest path]
 
+Note: 
+
+In order to model projective space using a sphere, we need to understand the geometry of the sphere itself.
+In Euclidean space, a straight line is the shortest path between two points.
+But given that we are not allowed to leave the surface of the sphere we must redefine distance to be measured along the surface
+the shortest paths, or geodesics, are no longer ordinary straight lines,  they are arcs of great circles, with a great circle being the intersection of a plane through the origin of the sphere, so the equator is a great circle, lines of longitude are great circles. 
+
 ---
 
 [Explain spherical geometry for S^2 and then argue by analogy that it works
 similarly in S^3.]
 [Specifically discuss how geodesics converge at the antipodal point]
 
+Note:
+
+Everything I’ve just said about the 2-sphere also works one dimension higher. So the 2 sphere is like a ball living in 3 dimensional space, then the 3 sphere lives in four-dimensional space, and we can’t necessarily see it directly, but we can draw analogies and reason how things work on the 3-sphere. 
+
+The most important property to us is that if you travel along a geodesic long enough, you don’t go off to infinity.
+You eventually reach the antipodal point, the exact opposite point on the sphere, and then return to where you started.
+So spherical geometry is compact you cannot escape. 
+And this is aligns exactly with what we need to visualize projective space 
+
 ---
 
 [Include the interactive demo of the earth in S^3 in an iframe]
+
+Note:
+So what you see here is what the Earth would look like if we were moving along a geodesic in s3, so what feels to us like a straight line but of course is not
+
+As we move backward the earth gets smaller and smaller,  receding off into the distance, like we’d expect, but it never disappears. eventually, it shrinks down to a smallest size, that corresponds to reaching the antipodal point.
+And then something weird happens, it starts to get larger again. It’s not that we’ve started moving in the opposite direction, we are still going “straight”
 
 --- 
 
