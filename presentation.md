@@ -427,8 +427,7 @@ We basically steal the Renaissance painter's trick: every pixel is a tiny line o
 <!-- <img height="300" src="images/cow.png"> -->
 
 Note:
-Just like our eyes! Hawk Tuah! 
-(line of sight) *whip noise*
+
 Signed distance function checks if we are outside or inside an object. 
 Tracing a geodesic is like following a path with your bike and not having to turn the handles
 
