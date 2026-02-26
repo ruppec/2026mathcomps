@@ -327,7 +327,7 @@ illustrations of these surfaces.
 
 ## Cubic Surface With 27 Lines
 
-<iframe style="width: 100%; aspect-ratio: 16/8; border: none; margin: 0;" src="cubic_demo/index.html"></iframe>
+<iframe style="width: 100%; aspect-ratio: 16/8; border: none; margin: 0;" src="cubic_demo/demo.html"></iframe>
 
 The coefficient minimap shows where the surface becomes singular and the
 topology changes.
@@ -368,7 +368,7 @@ lines.
 
 ## Degree 4 Surface Containing a Line
 
-<iframe style="width: 100%; aspect-ratio: 16/8; border: none; margin: 0;" src="quartic_demo/index.html"></iframe>
+<iframe style="width: 100%; aspect-ratio: 16/8; border: none; margin: 0;" src="quartic_demo/demo.html"></iframe>
 
 A plane containing the line intersected with the surface gives a degenerate
 degree 4 curve of a line and a degree 3 curve.
