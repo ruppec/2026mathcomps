@@ -13,6 +13,8 @@ projective space. We demonstrate our library's capabilities through visualizing
 the geometry of symmetric cubic surfaces and families of cubic curves on quartic
 surfaces, as well as how they manifest in this unbiased, personified view.
 
+[Full explanation here](main.md)
+
 ---
 
 This project holds the website for Katie Hess, Charlie Ruppe, and Jake
