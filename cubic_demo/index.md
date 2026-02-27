@@ -24,9 +24,7 @@ This symmetric condition means that the coefficient for $x_0^3$ is the same as
 $x_1^3$ and the coefficient for $x_0^2 x_1^2$ is the same as $x_3^2 x_2$ etc.
 Thus we can group the terms like so
 
-$$ c_1 \left(\sum_{0 \leq i \leq 3} x_i^3 \right)
- + c_2 \left(\sum_{0 \leq i \neq j \leq 3} x_i^2x_j \right)
- + c_3 \left(\sum_{0 \leq i < j < k \leq 3} x_ix_jx_k \right)$$
+$$ c_1 \left(\sum_{0 \leq i \leq 3} x_i^3 \right) + c_2 \left(\sum_{0 \leq i \neq j \leq 3} x_i^2x_j \right) + c_3 \left(\sum_{0 \leq i < j < k \leq 3} x_ix_jx_k \right)$$
  
  So under the condition of symmetry the space of cubics is equivalent to
  $\mathbb P^2$. We can compute the discriminant in terms of $c_1, c_2, c_3$.  So
