@@ -1,7 +1,7 @@
 # Interactive Visualizations of Projective Varieties in Spherical Geometry
 
 Many mathematical theorems are clarified by thinking in projective space, where
-so-called ``points at infinity” are added to complete the geometry. Often these
+so-called "points at infinity” are added to complete the geometry. Often these
 points at infinity are left out of drawings, with their relation to the other
 points and to each other suggested rather than directly illustrated. Yet to an
 observer living inside of projective space, these points at infinity would be
