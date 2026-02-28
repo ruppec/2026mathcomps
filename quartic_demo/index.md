@@ -54,7 +54,7 @@ as a string of $d$ `*`'s representing value and $n-1$ `|`'s seperating the
 bins. For example the string ``` *|**|*| ``` corresponds to the monomial $x_0
 x_1^2 x_2$. In total the string will always be length $d+n-1$ and each string is
 uniquely defined by a choice of where to put the stars. So the number of
-possible strings and hence the number of monomials is ${{d+n-1}\choose d}$. In
+possible strings and hence the number of monomials is ${d+n-1}\choose d$. In
 our case of $d=4$ and $n=4$ we get 35.
 
 Now consider the projective line
