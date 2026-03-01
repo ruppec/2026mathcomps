@@ -1,3 +1,8 @@
+---
+title: "Overview"
+date: "2026-02-27"
+---
+
 # Introduction
 
 The notion of creating a deductive formalization of mathematical
