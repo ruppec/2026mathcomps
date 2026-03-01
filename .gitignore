@@ -1,2 +1,30 @@
+# Hugo temporary files
+.hugo_build.lock
+/hugo_build.lock
+
+# Generated files and directories
+/public/
+/resources/_gen/
+/resources/
+/data/cache/
+
+# Executables (optional, depends on your workflow)
+hugo.exe
+hugo.linux
+hugo.darwin
+hugo.freebsd
+hugo.openbsd
+
+# OS and Editor files
 .DS_Store
-public/
+Thumbs.db
+ehthumbs.db
+[Tt]emp/
+[Tt]emporary/
+[Cc]ache/
+*.stackdump
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.idea/
+.vscode/
