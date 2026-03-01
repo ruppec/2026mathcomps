@@ -40,3 +40,7 @@ surfaces, as well as how they manifest in this unbiased, personified view.
           block = [['$$', '$$']]
   [markup.highlight]
     style = "paraiso-dark"  # Syntax highlighting style
+
+[caches]
+    [caches.images]
+        dir = ':cacheDir/images'
