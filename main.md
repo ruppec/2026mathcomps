@@ -123,12 +123,6 @@ to infinity.
 After identifying antipodal points to obtain $\mathbb{RP}^3$, the space
 remains compact but becomes non-simply connected.
 
--   explain intrinsic viewpoint
-
--   contrast with Euclidean intuition
-
--   short discussion of curvature and topology
-
 # Rendering Framework {#sec:framework}
 
 ## Ray Marching on $S^3$
@@ -152,32 +146,27 @@ along $\gamma(t)$ and test for intersections.
 
 We concern ourselves with surfaces specified by homogeneous polynomials
 $F:\mathbb{R}^4\to\mathbb{R}$, where the level sets
-$F(x_0,x_1,x_2,x_3) = 0$ define how the surfaces present themselves in
-our space [JS: (change i dont like wording i
-think)]{style="color: blue"}. Detecting an intersection is just a
-root-finding problem for the single-variable function
+$F(x_0,x_1,x_2,x_3) = 0$ define projective varieties. Because $F(\lambda x)=\lambda^dF(x)$, the zero set is invariant under scaling, and therefore descends naturally to $\mathbb{RP}^3$. To detect ray-surface intersections, we simply evaluate
 $$f(t) = F(\gamma(t)).$$ We march forward in the parameter $t$ with step
 size $\Delta t$, and a sign change in $f(t)$ from step $t$ to
 $t+\Delta t$ indicates that the surface has been crossed. We then refine
 the intersection points using a bracketing method. We approximate the
 restriction of $F$ along the ray using the Bernstein basis, which
 provides stable bounds and allows us to guarantee convergence within a
-chosen tolerance. [JS: idk anything about
-Bernstein]{style="color: blue"}
+chosen tolerance. 
 
 Great circles on $S^3$ satisfy the periodicity constraint
 $\gamma(t)=\gamma(2\pi+t)$. In addition, under the aforementioned
 antipodal quotient $\mathbb{RP}^3 \cong S^3/\{\pm 1\}$, we have that
-$[\gamma(t)]=[\gamma(\pi+t)]$. Thus, it suffices to impose a maximum
-parameter length of $\pi$ to avoid the ray redundantly traversing the
-space.
+$[\gamma(t)]=[\gamma(\pi+t)]$. Thus, it suffices to restrict $t\in [0,\pi]$. This prevents redundant traversal of the same projective points.
 
-After determining the first intersection point
-$x_\text{hit}:=\gamma(t_\text{hit})$, we compute the surface normals
-intrinsically by projecting the Euclidean gradient
-$\nabla F|_{x_\text{hit}}\in\mathbb{R}^4$ onto the tangent space of
-$S^3$ [JS: (equationhere?)]{style="color: blue"}. The resulting normal
-vector is used for shading and lighting calculations.
+At an intersection point $x_\text{hit}:=\gamma(t_\text{hit})$, we compute the surface normals
+intrinsically by projecting the Euclidean gradient onto the tangent space of $S^3$:
+\[
+n = \nabla F(x_{\text{hit}})
+- \left\langle \nabla F(x_{\text{hit}}),\, x_{\text{hit}} \right\rangle x_{\text{hit}}.
+\]
+This produces a vector tangent to $S^3$ and orthogonal to the surface. The resulting intrinsic normal is then used for shading and lighting computations.
 
 We also incorporate a path tracing option to model lighting. Secondary
 rays are generated at intersection points to simulate reflection and
@@ -185,12 +174,6 @@ global illumination effects. These rays again follow geodesics in $S^3$,
 ensuring that lighting computations are consistent with the intrinsic
 geometry. This enhances depth perception and helps communicate accurate
 geometric structure.
-
-maybe not necessary?
-
--   explain why homogeneous formulation is natural
-
--   discuss normalization
 
 ## Bernstein Basis Approximation
 
@@ -241,13 +224,9 @@ and less-portable features of Vulkan. Also, the option of using WebGPU
 allows for the possibility of using compute shaders or general-purpose
 storage buffers in future iterations of the software.
 
-## Lowering\... (TBD)
+## Symbolic Lowering Pipeline
 
-We additionally provide an implementation of a symbolic polynomial
-library in Rust, which is used to formulate implicit surfaces and
-perform polynomial arithmetic, such as the symbolic calculation of
-derivatives, on the CPU. These expressions are then expanded into
-monomial terms using a user-specified ordering and baked into WGSL code
+Implicit surfaces are defined symbolically on the CPU using a custom polynomial library implemented in Rust. This library supports symbolic differentiation, polynomial multiplication and addition, and monomial expansion in a chosen graded ordering, all on the CPU. Given a symbolic expression for a homogeneous polynomial, these expressions are then expanded into monomial form using a user-specified ordering and baked into WGSL code
 for use as SDFs on the GPU.
 
 # Examples {#sec:examples}
@@ -293,11 +272,10 @@ defining ideal and our space (the zariski closure)
 
 # Discussion and Conclusion
 
--summarize contributions -educational implications? -future directions
+We have developed an intrinsic rendering framework for $\mathbb{RP}^3$ based on its realization as the antipodal quotient $S^3/{\pm1}$. By performing ray marching along spherical geodesics and evaluating homogeneous surface equations directly on $S^3$, we eliminate the artificial distinction between finite and infinite points. Further directions may include 
 
-thurston paper
 
-On Maximal Homogeneous 3-Geometries and Their Visualization Emil molnar
+# References
 
-Projective geometry and duality for graphics, games and visualization
-Vaclav Skala
+
+
