@@ -1,4 +1,4 @@
-baseURL = 'https://ruppec.github.io/2026mathcomps'
+baseURL = 'https://ruppec.github.io/2026mathcomps/'
 languageCode = 'en-us'
 title = 'Interactive Visualizations of Projective Varieties in Spherical Geometry'
 theme = 'HugoTeX'
