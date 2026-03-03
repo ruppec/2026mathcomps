@@ -172,10 +172,7 @@ $[\gamma(t)]=[\gamma(\pi+t)]$. Thus, it suffices to restrict $t\in [0,\pi]$. Thi
 
 At an intersection point $x_\text{hit}:=\gamma(t_\text{hit})$, we compute the surface normals
 intrinsically by projecting the Euclidean gradient onto the tangent space of $S^3$:
-\[
-n = \nabla F(x_{\text{hit}})
-- \left\langle \nabla F(x_{\text{hit}}),\, x_{\text{hit}} \right\rangle x_{\text{hit}}.
-\]
+$n = \nabla F(x_{\text{hit}}) - \left\langle \nabla F(x_{\text{hit}}),\, x_{\text{hit}} \right\rangle x_{\text{hit}}$.
 This produces a vector tangent to $S^3$ and orthogonal to the surface. The resulting intrinsic normal is then used for shading and lighting computations.
 
 We also incorporate a path tracing option to model lighting. Secondary
