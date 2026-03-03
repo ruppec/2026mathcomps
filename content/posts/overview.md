@@ -231,48 +231,7 @@ storage buffers in future iterations of the software.
 Implicit surfaces are defined symbolically on the CPU using a custom polynomial library implemented in Rust. This library supports symbolic differentiation, polynomial multiplication and addition, and monomial expansion in a chosen graded ordering, all on the CPU. Given a symbolic expression for a homogeneous polynomial, these expressions are then expanded into monomial form using a user-specified ordering and baked into WGSL code
 for use as SDFs on the GPU.
 
-# Examples {#sec:examples}
-
-Discuss examples we have rendered and their significance
-
--   (Jake) Bezout's theorem, group law on elliptic curves, existence
-    theorem
-
-    -   visualize a projection from a higher affine space onto our
-        space, and compare the image of a variety defined by an ideal in
-        that higher space and its image versus the variety defined by
-        the intersection of the defining ideal and our space (the
-        zariski closure)
-
-## Symmetric Cubic Surfaces
-
-## Cubic Curves on Quartic Surfaces
-
-The shader implements an intrinsic numerical scheme for computing
-intersections between geodesics in $S^3$ and homogeneous quartic
-hypersurfaces. Let $$F : \mathbb{R}^4 \to \mathbb{R}$$ be a homogeneous
-polynomial of degree four. The zero set of $F$ determines a quartic
-hypersurface in $\mathbb{R}^4$, and its intersection with $S^3$ brings
-it down to a quartic surface in $\mathbb{RP}^3$.
-
-Quartic surfaces are constructed in one implementation by
-
-and in another by combining two homogeneous cubic polynomials that
-define elliptic curves. Let $$C_1(x_0,x_1,x_2,x_3), \qquad 
-C_2(x_0,x_1,x_2,x_3)$$ be homogeneous cubic polynomials whose vanishing
-loci define projective elliptic curves. From these, one forms a quartic
-polynomial by a homogeneous combination such as
-$$F = C_1 \cdot L_1 + C_2 \cdot L_2,$$ where $L_1$ and $L_2$ are chosen
-so that $F$ has degree four.
-
-## Bezout's Theorem
-
-visualize a projection from a higher affine space onto our space, and
-compare the image of a variety defined by an ideal in that higher space
-and its image versus the variety defined by the intersection of the
-defining ideal and our space (the zariski closure)
-
-# Discussion and Conclusion
+# Discussion
 
 We have developed an intrinsic rendering framework for $\mathbb{RP}^3$ based on its realization as the antipodal quotient $S^3/{\pm1}$. By performing ray marching along spherical geodesics and evaluating homogeneous surface equations directly on $S^3$, we eliminate the artificial distinction between finite and infinite points. Further directions may include 
 
