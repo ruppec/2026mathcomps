@@ -41,13 +41,16 @@ This is an example of (a real slice of) an elliptic K3 surface.
 
 
 
-## Why do most quartics not contain a line? {#lines-on-surface}
+## Why do most quartics not contain a line? {#lines-on-surfaces}
 
 The set of all quartic surfaces is itself a space, and the set of all quartic
 surfaces containing a line is a subspace.
 Both spaces have a dimension and the dimension of quartics containing a line is
 1 dimension lower than the dimension of the full space of quartics. You would
 say that the space of quartics containing a line has *codimension* 1.
+
+We will proceed using an argument similar to one presented in Section 1.2 of
+(Hassett 2016).
 
 Since we are considering surfaces in $\mathbb P^3$ our quartic surface is
 defined by a homogenous polynomial $f$ of degree 3 in $\mathbb C[x_0, x_1, x_2, x_3]$.
@@ -111,3 +114,7 @@ And we are done.
 This same story can be repeated with replacing quartic with cubic or quadric and
 the dimensions will line up differently. More to come on this soon.
 
+
+# References
+
+Hassett, Brendan. 2016. “Cubic Fourfolds, K3 Surfaces, and Rationality Questions.” arXiv:1601.05501. Version 2. Preprint, arXiv, July 17. https://doi.org/10.48550/arXiv.1601.05501.

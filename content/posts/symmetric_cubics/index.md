@@ -17,7 +17,7 @@ display: block;"></canvas>
 
 To start, we are illustrating the classic result of the existence of 27 straight
 lines on a cubic surface. Finding these lines is a more involved task for a
-general cubic but luckily we are using results from Brazelton and Raman 2024
+general cubic but luckily we are using results from (Brazelton and Raman 2025)
 that allow us to easily compute and visualize the lines.
 
 By symmetric we mean the defining homogenous polynomial $p(x_0, x_1, x_2, x_3)$
@@ -65,5 +65,9 @@ $$ c_1 \left(\sum_{0 \leq i \leq 3} x_i^3 \right) + c_2 \left(\sum_{0 \leq i \ne
  projective line and 12 orange lines corresponding to the $S_4/(1 2)(3 4)$ orbit
  of some other line.
  
- The details can be found in Theorem 7.1 of Brazelton and Raman 2024. 
+ The details can be found in Theorem 7.1 of (Brazelton and Raman 2025). 
  
+
+# References
+
+Brazelton, Thomas, and Sidhanth Raman. 2025. “Monodromy in the Space of Symmetric Cubic Surfaces with a Line.” arXiv:2410.09270. Preprint, arXiv, November 25. https://doi.org/10.48550/arXiv.2410.09270.
