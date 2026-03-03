@@ -155,15 +155,12 @@ we instead utilize ray marching. Here, we incrementally step forward
 along $\gamma(t)$ and test for intersections.
 
 We concern ourselves with surfaces specified by homogeneous polynomials
-$F:\mathbb{R}^4\to\mathbb{R}$, where the level sets
-$F(x_0,x_1,x_2,x_3) = 0$ define projective varieties. Because $F(\lambda x)=\lambda^dF(x)$, the zero set is invariant under scaling, and therefore descends naturally to $\mathbb{RP}^3$. To detect ray-surface intersections, we simply evaluate
-$$f(t) = F(\gamma(t)).$$ We march forward in the parameter $t$ with step
-size $\Delta t$, and a sign change in $f(t)$ from step $t$ to
-$t+\Delta t$ indicates that the surface has been crossed. We then refine
-the intersection points using a bracketing method. We approximate the
-restriction of $F$ along the ray using the Bernstein basis, which
-provides stable bounds and allows us to guarantee convergence within a
-chosen tolerance. 
+$F:\mathbb{R}^4\to\mathbb{R}$, where the level sets $F(x_0,x_1,x_2,x_3) = 0$
+define projective varieties. Because $F(\lambda x)=\lambda^dF(x)$, the zero set
+is invariant under scaling, and therefore is well-defined on $\mathbb{RP}^3$.
+
+Methods of detecting the intersection of a ray and an implicit surface are
+detailed in the following two sections.
 
 Great circles on $S^3$ satisfy the periodicity constraint
 $\gamma(t)=\gamma(2\pi+t)$. In addition, under the aforementioned
@@ -182,14 +179,89 @@ ensuring that lighting computations are consistent with the intrinsic
 geometry. This enhances depth perception and helps communicate accurate
 geometric structure.
 
+## Implicit SDF Approximation
+
+One way of computing ray intersections with implicit surfaces is ray
+marching using a signed distance function (SDF). A great discussion of 
+ray marching SDFs has been given many times by many people. One good resource is
+(Quilez 2008)
+
+A signed distance function for an object is a function on our space that returns
+the shortest distance between the given point and any point of the geometry of
+the object, returning a negative value for points inside the object.
+The SDF at a point $p$ outside of the object gives us the radius of the largest ball
+centered at $p$ that doesn't overlap with the geometry of the object.
+
+If we march forward from $p$ by a distance of $SDF(p)$ we are guaranteed not to
+hit the object.
+
+We can continue marching forward until the $SDF(p)$ is within a given tolerance at
+which point we decide that we have hit the object. 
+
+The following is an implementation of this method written in WGSL (WebGPU Shading
+Language). The version in our code is modified slightly to work on both sides of
+the surface.
+
+```wgsl
+const EPSILON = 5e-5;
+fn marchRay(r: Ray) -> f32 {
+  var t = 10.*EPSILON;
+  for(var i = 0; i < 250; i++) {
+    var sd = sdfScene(flow(r,t));
+    if( abs(sd) < EPSILON) {break;}
+    t+=sd;
+  }
+  return t;
+}
+```
+
+The main object of our scene is defined as the zero set of a defining implicit
+function.  The raymarching method is in effect converging on the zero set of the
+signed distance function, but we don't necessarily know that our implicit
+function is giving us the signed distance to the object, and in most cases it
+isn't.
+
+We use a technique described by (Quilez 2011) where we approximate a true SDF by
+taking the value of the implicit function $f$, and dividing by the length of the
+gradient $|\delta f|$:
+
+$$ \text{sdf}(p) := \frac{f(p)}{|\delta f(p)|}.$$
+
+In effect we are constructing a linear approximation of the SDF at each
+point. To convince yourself of this, imagine that the surface defined by $f$ is
+just a plane, so $f$ is of the form $f(p) = v \cdot p + c$ for $v \in\mathbb
+R^4$ and $c \in \mathbb R$. In this case
+
+$$ \text{sdf}(p) = \frac{ v \cdot p + c }{|v|}$$
+
+which is the true SDF for that plane! The logic is that if our surface is smooth
+and we are sufficiently close, it will resemble a plane and this approximation
+will converge correctly.
+
+In practice this works suprisingly well with artifacts rare even when the
+surface contains singularities. Unfortunately this method can be slow to
+converge and requires many steps, especially when the ray is at a very oblique
+angle to the surface or passes closely by.
+
+On the GPU every pixel essentially must go through the same paths in the code at
+the same time, so if only a few pixels fail to converge quickly we have to
+choose between increasing the maximum number of iterations and affecting
+framerate, or lower the cap and see visual artifacts.
+
+These problems help motivate our second method of ray-object intersection, using
+Descartes Method in the Bernstein basis.
+
 ## Bernstein Basis Approximation
 
 To compute ray surface intersections reliably, we approximate certain
-functions using the Bernstein basis. For a polynomial of degree $n$ in
-one variable on the interval $[0,1]$, the Bernstein basis consists of
-the functions $$B_{k}^{n}(t) = \binom{n}{k} t^{k}(1-t)^{n-k}, 
-\quad k = 0, \dots, n.$$ Any polynomial $p(t)$ of degree at most $n$ can
-be written uniquely as $$p(t) = \sum_{k=0}^{n} c_k B_k^n(t).$$
+functions using the Bernstein basis. This method is implemented to great sucesss
+in professional CAD software for rendering Bezier curves. A proof of concept for
+algebraic surfaces is implemented by (“Raycasting Implicit Surfaces” 2017).
+
+For a polynomial of degree $n$ in one variable on the interval $[0,1]$, the
+Bernstein basis consists of the functions $$B_{k}^{n}(t) = \binom{n}{k}
+t^{k}(1-t)^{n-k}, \quad k = 0, \dots, n.$$ Any polynomial $p(t)$ of degree at
+most $n$ can be written uniquely as $$p(t) = \sum_{k=0}^{n} c_k B_k^n(t).$$
 
 One important benefit of using the Bernstein basis is that it allows for
 control over the range of the function. On $[0,1]$, the polynomial
@@ -238,7 +310,11 @@ for use as SDFs on the GPU.
 
 # Discussion
 
-We have developed an intrinsic rendering framework for $\mathbb{RP}^3$ based on its realization as the antipodal quotient $S^3/{\pm1}$. By performing ray marching along spherical geodesics and evaluating homogeneous surface equations directly on $S^3$, we eliminate the artificial distinction between finite and infinite points. Further directions may include 
+We have developed an intrinsic rendering framework for $\mathbb{RP}^3$ based on
+its realization as the antipodal quotient $S^3/{\pm1}$. By performing ray
+marching along spherical geodesics and evaluating homogeneous surface equations
+directly on $S^3$, we eliminate the artificial distinction between finite and
+infinite points.
 
 
 # References
@@ -247,4 +323,7 @@ Coulon, Rémi, Elisabetta A. Matsumoto, Henry Segerman, and Steve J. Trettel. 20
 
 “Raycasting Implicit Surfaces.” 2017. February 3. https://cindyjs.org/gallery/cindygl/Raytracer/index.html.
 
-Quilez, Inigo. 2011. “Inigo Quilez :: Computer Graphics, Maths, Shaders, Fractals, Demoscene.” https://iquilezles.org/articles/distance/.
+Quilez, Inigo. 2008. “Inigo Quilez   ::   Articles   ::   Rendering Worlds With Two Triangles - 2008.” https://iquilezles.org/articles/nvscene2008/.
+
+Quilez, Inigo. 2011. “Inigo Quilez   ::   Articles   ::   Distance Estimation - 2011.” https://iquilezles.org/articles/distance/.
+
