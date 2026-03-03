@@ -33,6 +33,14 @@ directly along geodesics of $S^3$ and preserve the intrinsic geometry.
 Surfaces defined by homogeneous equations are evaluated on the sphere,
 and antipodal symmetry ensures the correct projective identification.
 
+This work is heavily inspired by (Coulon et al. 2022) which produced a set of
+flexible software for ray marching the Thurstonian geometries and their
+quotients, including $S^3$ and the quotient $\mathbb{RP}^3$. Our techniques are
+also influenced by discussion from (Quilez 2011) on approximating distance to
+implicit surfaces and this proof of concept (“Raycasting Implicit Surfaces”
+2017) using Descarte's method in the Bernstein Basis to solve for real ray
+intersections.
+
 In Sec. [2](#sec:background), we review the structure of $\mathbb{RP}^3$
 and its realization as the antipodal quotient of $S^3$. Sec.
 [3](#sec:framework)
@@ -238,5 +246,8 @@ We have developed an intrinsic rendering framework for $\mathbb{RP}^3$ based on 
 
 # References
 
+Coulon, Rémi, Elisabetta A. Matsumoto, Henry Segerman, and Steve J. Trettel. 2022. “Ray-Marching Thurston Geometries.” Experimental Mathematics 31 (4): 1197–277. https://doi.org/10.1080/10586458.2022.2030262.
 
+“Raycasting Implicit Surfaces.” 2017. February 3. https://cindyjs.org/gallery/cindygl/Raytracer/index.html.
 
+Quilez, Inigo. 2011. “Inigo Quilez :: Computer Graphics, Maths, Shaders, Fractals, Demoscene.” https://iquilezles.org/articles/distance/.
