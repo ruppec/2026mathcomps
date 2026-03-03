@@ -253,10 +253,12 @@ Descartes Method in the Bernstein basis.
 
 ## Bernstein Basis Approximation
 
-To compute ray surface intersections reliably, we approximate certain
-functions using the Bernstein basis. This method is implemented to great sucesss
-in professional CAD software for rendering Bezier curves. A proof of concept for
-algebraic surfaces is implemented by (“Raycasting Implicit Surfaces” 2017).
+To compute ray surface intersections reliably, we approximate $F(\gamma(t))$
+using the Bernstein basis. This method is implemented to great sucesss in
+professional CAD software for rendering Bezier curves. A more thorough
+explanation of the algorithm and it's connection to Descarte's law of signs is
+given in (Mourrain et al. 2005). A proof of concept for algebraic surfaces is
+implemented by (“Raycasting Implicit Surfaces” 2017).
 
 For a polynomial of degree $n$ in one variable on the interval $[0,1]$, the
 Bernstein basis consists of the functions $$B_{k}^{n}(t) = \binom{n}{k}
@@ -327,3 +329,4 @@ Quilez, Inigo. 2008. “Inigo Quilez   ::   Articles   ::   Rendering Worlds
 
 Quilez, Inigo. 2011. “Inigo Quilez   ::   Articles   ::   Distance Estimation - 2011.” https://iquilezles.org/articles/distance/.
 
+Mourrain, Bernard, Rouillier Fabrice, and Marie-Francoise Roy. 2005. “The Bernstein Basis and Real Root Isolation.” In Combinatorial and Computational Geometry, edited by Emo Welzl, Jacob E. Goodman, and Janos Pach. Mathematical Sciences Research Institute Publications. Cambridge University Press. https://doi.org/10.1017/9781009701259.025.
