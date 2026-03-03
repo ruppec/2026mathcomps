@@ -27,7 +27,7 @@ intersection of that plane with the quartic surface will be a quartic curve
 containing a line, meaning the remaining curve will be of degree at most 3
 (allowing for multiplicity of $L$).
 
-If without loss of generality let's let $L = \{ x_0 = x_1 = 0 \}$, then given two
+Without loss of generality let $L = \{ x_0 = x_1 = 0 \}$. Given two
 cubic curves, $p(x_0,x_2, x_3)$ and $q(x_1, x_2, x_3)$ we define the quartic
 surface
 
