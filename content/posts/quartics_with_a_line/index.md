@@ -80,7 +80,7 @@ If we restrict $f$ to $L$ all the terms with $x_2$ or $x_3$ vanish and we get
 $$ f \mid _L = A x_0^4 + B x_0^3 x_1^2 + C x_0^2 x_1^2 + D x_0 x_1^3 + E x_1^4$$
 
 Now if $L$ is contained in the surface that means that $f$ vanishes on $L$. So
-f\mid _L$ must be the zero polynomial and all those coefficients must be zero.
+$f\mid _L$ must be the zero polynomial and all those coefficients must be zero.
 
 So asking that the surface contains $L$ is a 5 equation constraint in the
 coefficient space meaning the space of quartics containing $L$ is degree 30.
